@@ -14,13 +14,8 @@ Payment = Type[IPayment]
 class IShoppingCart(NamedTuple):
     uuid: str
     products: List[Product]
-    address: Address
-    payment: Payment
 
-    addItem: Callable[[Product], Any]
-    removeItem: Callable[[Product], Any]
+    add_product: Callable[[Product], Any]
+    remove_product: Callable[[Product], Any]
 
-    setAddress: Callable[[Address], Any]
-    setPayment: Callable[[Payment], Any]
-
-    checkout: Callable[[], Order]
+    generate_order: Callable[[], Order]
