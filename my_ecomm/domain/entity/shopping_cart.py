@@ -5,17 +5,21 @@ from .product import IProduct
 
 Product = Type[IProduct]
 
+
 class ShoppingCart(IShoppingCart):
-    products = []
+    _products = []
 
     def __len__(self):
-        return len(self.products)
+        return len(self._products)
 
     def add_product(self, product: Product):
-        self.products.append(product)
+        self._products.append(product)
 
-    def generate_order():
-        pass
+    def get_product_list(self):
+        return self._products
 
     def remove_product():
+        pass
+
+    def generate_order():
         pass
