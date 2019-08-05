@@ -27,8 +27,12 @@ class IShoppingCart(ABC):
 
     @abstractmethod
     def remove_product(self, produtct: Product):
-        raise('Not implemented')
+        raise Exception('Not implemented')
 
     @abstractmethod
     def generate_order() -> Order:
-        raise('Not implemented')
+        raise Exception('Not implemented')
+
+    @abstractmethod
+    def get_product_list(self) -> List[Product]:
+        raise Exception('Not implemented')
