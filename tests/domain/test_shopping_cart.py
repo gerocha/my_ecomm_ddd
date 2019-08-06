@@ -1,6 +1,6 @@
 from my_ecomm.domain.entity.shopping_cart import ShoppingCart
 
-from my_ecomm.domain.entity.customer import ICustomer
+from my_ecomm.domain.entity import (ICustomer, IOrder)
 
 
 class TestShoppingCart:
@@ -21,3 +21,12 @@ class TestShoppingCart:
 
         cart.add_product(product=product)
         assert len(cart) == 2
+
+    def test_generate_order(self, customer, product):
+        cart = self.generate_shopping_cart(customer=customer)
+
+        cart.add_product(product=product)
+
+        order = cart.generate_order()
+
+        assert isinstance(order, IOrder)
