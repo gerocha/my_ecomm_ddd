@@ -2,6 +2,7 @@ import pytest
 
 from my_ecomm.domain.entity.product import Product
 from my_ecomm.domain.entity.customer import Customer
+from my_ecomm.domain.entity.shopping_cart import ShoppingCart
 
 
 @pytest.fixture
@@ -22,3 +23,8 @@ def customer():
             password='batmandesnudo',
             address='caverna'
             )
+
+
+@pytest.fixture
+def cart(customer):
+    return ShoppingCart(customer=customer, uuid='1')

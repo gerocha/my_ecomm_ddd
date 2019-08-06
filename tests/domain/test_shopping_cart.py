@@ -1,20 +1,12 @@
-from my_ecomm.domain.entity.shopping_cart import ShoppingCart
-
 from my_ecomm.domain.entity import (ICustomer, IOrder)
 
 
 class TestShoppingCart:
-    def generate_shopping_cart(self, customer, uuid='1'):
-        return ShoppingCart(customer=customer, uuid=uuid)
-
-    def test_basic_assertions(self, product, customer):
-        cart = self.generate_shopping_cart(customer=customer)
-
+    def test_basic_assertions(self, cart):
         assert isinstance(cart.customer, ICustomer)
         assert cart.uuid == '1'
 
-    def test_add_item_to_cart_should_add_item(self, product, customer):
-        cart = self.generate_shopping_cart(customer=customer)
+    def test_add_item_to_cart_should_add_item(self, cart, product):
         cart.add_product(product=product)
 
         assert len(cart) == 1
@@ -22,11 +14,8 @@ class TestShoppingCart:
         cart.add_product(product=product)
         assert len(cart) == 2
 
-    def test_generate_order(self, customer, product):
-        cart = self.generate_shopping_cart(customer=customer)
-
+    def test_generate_order(self, cart, product):
         cart.add_product(product=product)
-
         order = cart.generate_order()
 
         assert isinstance(order, IOrder)
