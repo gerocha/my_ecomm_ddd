@@ -1,38 +1,24 @@
-from typing import List, Type
+from typing import List
 from abc import ABC, abstractmethod
 
 from .product import IProduct
 from .order import IOrder
-from .address import IAddress
 from .customer import ICustomer
-
-Address = Type[IAddress]
-Order = Type[IOrder]
-Product = Type[IProduct]
-Customer = Type[ICustomer]
 
 
 class IShoppingCart(ABC):
-    def __init__(self,
-                 uuid: str,
-                 customer: Customer,
-                 products: List[Product] = []):
-        self.uuid = uuid
-        self.products = products
-        self.customer = customer
+    uuid: str
+    customer: ICustomer
+    products: List[IProduct]
 
     @abstractmethod
-    def add_product(self, product: Product):
+    def add_product(self, product: IProduct):
         raise Exception('Not implemented')
 
     @abstractmethod
-    def remove_product(self, produtct: Product):
+    def remove_product(self, produtct: IProduct):
         raise Exception('Not implemented')
 
     @abstractmethod
-    def generate_order() -> Order:
-        raise Exception('Not implemented')
-
-    @abstractmethod
-    def get_product_list(self) -> List[Product]:
+    def generate_order() -> IOrder:
         raise Exception('Not implemented')
