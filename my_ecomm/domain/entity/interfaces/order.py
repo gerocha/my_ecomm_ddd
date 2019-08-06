@@ -1,11 +1,10 @@
-from typing import NamedTuple, List, Type
+from typing import List
+from abc import ABC
 
 from .product import IProduct
 
-Product = Type[IProduct]
 
-
-class IOrder(NamedTuple):
+class IOrder(ABC):
     uuid: str
-    products: List[Product]
+    products: List[IProduct]
     total: int
