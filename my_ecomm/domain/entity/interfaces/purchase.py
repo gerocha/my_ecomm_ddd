@@ -1,23 +1,25 @@
-from typing import NamedTuple, Type, Callable, Any
+from abc import ABC, abstractmethod
 
 from .order import IOrder
-from .product import IProduct
 from .payment import IPayment
 from .address import IAddress
 
-Order = Type[IOrder]
-Product = Type[IProduct]
-Payment = Type[IPayment]
-Address = Type[IAddress]
 
-
-class IPurchase(NamedTuple):
+class IPurchase(ABC):
     uuid: str
-    order: Order
-    shipping_address: Address
-    payment: Payment
+    order: IOrder
+    shipping_address: IAddress
+    payment_method: IPayment
     status: str
 
-    set_shipping_address: Callable[[Address], Any]
-    set_payment: Callable[[Payment], Any]
-    purchase: Callable[[], Any]
+    @abstractmethod
+    def set_shipping_address(address: IAddress):
+        pass
+
+    @abstractmethod
+    def set_payment_nethod(IPayment):
+        pass
+
+    @abstractmethod
+    def purchase():
+        pass

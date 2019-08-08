@@ -1,8 +1,7 @@
 import pytest
 
-from my_ecomm.domain.entity.product import Product
-from my_ecomm.domain.entity.customer import Customer
-from my_ecomm.domain.entity.shopping_cart import ShoppingCart
+from my_ecomm.domain.entity import (Product, Customer, ShoppingCart,
+                                    Order, Payment)
 
 
 @pytest.fixture
@@ -28,3 +27,13 @@ def customer():
 @pytest.fixture
 def cart(customer):
     return ShoppingCart(customer=customer, uuid='1')
+
+
+@pytest.fixture
+def order(product):
+    return Order(products=[product])
+
+
+@pytest.fixture
+def payment():
+    return Payment()
