@@ -13,13 +13,13 @@ class IPurchase(ABC):
     status: str
 
     @abstractmethod
-    def set_shipping_address(address: IAddress):
+    def set_shipping_address(self, address: IAddress):
         pass
 
     @abstractmethod
-    def set_payment_nethod(IPayment):
+    def set_payment_method(self, payment: IPayment):
         pass
 
     @abstractmethod
-    def purchase():
+    def purchase(self):
         pass
