@@ -1,4 +1,4 @@
-from .interfaces import (IPurchase, IOrder, IPayment)
+from .interfaces import (IPurchase, IOrder, IPayment, IAddress)
 
 
 class Purchase(IPurchase):
@@ -15,5 +15,5 @@ class Purchase(IPurchase):
     def set_payment_method(self, payment: IPayment):
         self.payment_method = payment
 
-    def set_shipping_address(self, address):
-        pass
+    def set_shipping_address(self, address: IAddress):
+        self.shipping_address = address

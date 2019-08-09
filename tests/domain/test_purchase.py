@@ -8,3 +8,10 @@ class TestPurchase:
         purchase.set_payment_method(payment)
 
         assert purchase.payment_method is payment
+
+    def test_add_shipping_address(self, order, address):
+        purchase = Purchase(order=order)
+
+        purchase.set_shipping_address(address=address)
+
+        assert purchase.shipping_address is address

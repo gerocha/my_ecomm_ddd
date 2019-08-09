@@ -1,7 +1,7 @@
 import pytest
 
 from my_ecomm.domain.entity import (Product, Customer, ShoppingCart,
-                                    Order, Payment)
+                                    Order, Payment, Address)
 
 
 @pytest.fixture
@@ -37,3 +37,14 @@ def order(product):
 @pytest.fixture
 def payment():
     return Payment()
+
+
+@pytest.fixture
+def address():
+    return Address(
+            uuid='1',
+            city='gothan',
+            neighborhood='sei la',
+            state='of panic',
+            zipcode='111111111'
+            )
