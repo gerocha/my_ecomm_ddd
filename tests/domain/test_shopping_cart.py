@@ -1,11 +1,7 @@
-from my_ecomm.domain.entity import (ICustomer, IOrder)
+from my_ecomm.domain.entity import (IOrder)
 
 
 class TestShoppingCart:
-    def test_basic_assertions(self, cart):
-        assert isinstance(cart.customer, ICustomer)
-        assert cart.uuid == '1'
-
     def test_add_item_to_cart_should_add_item(self, cart, product):
         cart.add_product(product=product)
 

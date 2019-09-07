@@ -26,7 +26,7 @@ def customer():
 
 @pytest.fixture
 def cart(customer):
-    return ShoppingCart(customer=customer, uuid='1')
+    return ShoppingCart(uuid='1')
 
 
 @pytest.fixture

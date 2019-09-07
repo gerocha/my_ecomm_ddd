@@ -5,3 +5,4 @@ from .order import *
 from .purchase import Purchase
 from .payment import Payment
 from .address import Address
+from .invoice import Invoice

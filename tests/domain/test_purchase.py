@@ -1,4 +1,4 @@
-from my_ecomm.domain.entity import Purchase
+from my_ecomm.domain.entity import Purchase, Invoice
 
 
 class TestPurchase:
@@ -15,3 +15,10 @@ class TestPurchase:
         purchase.set_shipping_address(address=address)
 
         assert purchase.shipping_address is address
+
+    def test_purchase_total_should_generate_invoice(self, order):
+        purchase = Purchase(order=order)
+
+        invoice = purchase.purchase()
+
+        assert isinstance(invoice, Invoice)

@@ -11,6 +11,7 @@ class IPurchase(ABC):
     shipping_address: IAddress
     payment_method: IPayment
     status: str
+    total: int
 
     @abstractmethod
     def set_shipping_address(self, address: IAddress):

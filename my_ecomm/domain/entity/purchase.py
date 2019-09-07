@@ -1,3 +1,4 @@
+from .invoice import Invoice
 from .interfaces import (IPurchase, IOrder, IPayment, IAddress)
 
 
@@ -8,9 +9,13 @@ class Purchase(IPurchase):
         self.shipping_address = None
         self.payment_method = None
         self.status = None
+        self.total = self.order.total
 
     def purchase(self):
-        pass
+        if not self.payment_method:
+            raise Exception('Missign payment method')
+
+        return Invoice()
 
     def set_payment_method(self, payment: IPayment):
         self.payment_method = payment

@@ -7,4 +7,7 @@ from .product import IProduct
 class IOrder(ABC):
     uuid: str
     products: List[IProduct]
-    total: int
+
+    @property
+    def total(self):
+        pass
