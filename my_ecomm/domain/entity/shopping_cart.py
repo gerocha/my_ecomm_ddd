@@ -5,6 +5,10 @@ from .interfaces.shopping_cart import IShoppingCart
 from .product import IProduct
 
 
+from my_ecomm.domain.entity.exceptions.shopping_cart import \
+        QuantityGreaterThanItemQuantity
+
+
 class ShoppingCartItem:
     def __init__(self, item, quantity):
         self.item = item
@@ -34,6 +38,6 @@ class ShoppingCart(IShoppingCart):
         for item in self.item_list:
             if item.item == product:
                 if quantity > item.quantity:
-                    raise Exception('quantity greather than item quantity')
+                    raise QuantityGreaterThanItemQuantity
                 item.quantity -= quantity
                 return
