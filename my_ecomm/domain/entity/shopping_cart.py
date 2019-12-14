@@ -32,6 +32,8 @@ class ShoppingCart(IShoppingCart):
 
     def remove_product(self, product: IProduct, quantity: int):
         for item in self.item_list:
-            if item == product:
+            if item.item == product:
+                if quantity > item.quantity:
+                    raise Exception('quantity greather than item quantity')
                 item.quantity -= quantity
                 return
