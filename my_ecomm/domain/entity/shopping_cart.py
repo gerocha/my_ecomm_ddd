@@ -1,8 +1,14 @@
+from functools import reduce
+
 from typing import List
 from .interfaces.shopping_cart import IShoppingCart
 from .product import IProduct
 
-from .order import Order
+
+class ShoppingCartItem:
+    def __init__(self, item, quantity):
+        self.item = item
+        self.quantity = quantity
 
 
 class ShoppingCart(IShoppingCart):
@@ -10,20 +16,22 @@ class ShoppingCart(IShoppingCart):
                  uuid: str,
                  products: List[IProduct] = []):
         self.uuid = uuid
-        self.products = products
+        self.item_list = []
         self.order = None
 
     def __len__(self):
-        return len(self.products)
+        return reduce(lambda x, item: item.quantity + x, self.item_list, 0)
 
-    def add_product(self, product: IProduct):
-        self.products.append(product)
+    def add_product(self, product: IProduct, quantity: int = 1):
+        for item in self.item_list:
+            if product == item.item:
+                item.quantity += quantity
+                return
+        self.item_list.append(ShoppingCartItem(item=product,
+                              quantity=quantity))
 
-    def remove_product():
-        pass
-
-    def generate_order(self):
-        if not self.order:
-            self.order = Order(products=self.products)
-
-        return self.order
+    def remove_product(self, product: IProduct, quantity: int):
+        for item in self.item_list:
+            if item == product:
+                item.quantity -= quantity
+                return
