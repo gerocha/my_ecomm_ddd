@@ -6,6 +6,7 @@ from .product import IProduct
 
 from my_ecomm.domain.entity.exceptions.shopping_cart import \
         QuantityGreaterThanItemQuantity
+from my_ecomm.domain.entity.order import Order
 
 
 class ShoppingCartItem:
@@ -38,3 +39,9 @@ class ShoppingCart(IShoppingCart):
                     raise QuantityGreaterThanItemQuantity
                 item.quantity -= quantity
                 return
+
+    def clear(self):
+        self.item_list = []
+
+    def generate_order(self):
+        return Order(uuid='teste')

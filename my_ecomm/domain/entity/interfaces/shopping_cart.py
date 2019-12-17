@@ -17,3 +17,11 @@ class IShoppingCart(ABC):
     @abstractmethod
     def remove_product(self, produtct: IProduct, quantity: int):
         raise Exception('Not implemented')
+
+    @abstractmethod
+    def clear(self):
+        pass
+
+    @abstractmethod
+    def generate_order(self):
+        pass
