@@ -1,6 +1,5 @@
 from functools import reduce
 
-from typing import List
 from .interfaces.shopping_cart import IShoppingCart
 from .product import IProduct
 
@@ -17,11 +16,9 @@ class ShoppingCartItem:
 
 class ShoppingCart(IShoppingCart):
     def __init__(self,
-                 uuid: str,
-                 products: List[IProduct] = []):
+                 uuid: str):
         self.uuid = uuid
         self.item_list = []
-        self.order = None
 
     def __len__(self):
         return reduce(lambda x, item: item.quantity + x, self.item_list, 0)
@@ -36,7 +33,7 @@ class ShoppingCart(IShoppingCart):
 
     def remove_product(self, product: IProduct, quantity: int):
         for item in self.item_list:
-            if item.item == product:
+            if item.item is product:
                 if quantity > item.quantity:
                     raise QuantityGreaterThanItemQuantity
                 item.quantity -= quantity

@@ -8,12 +8,12 @@ from .customer import ICustomer
 class IShoppingCart(ABC):
     uuid: str
     customer: ICustomer
-    products: List[IProduct]
+    item_list: List[IProduct]
 
     @abstractmethod
-    def add_product(self, product: IProduct):
+    def add_product(self, product: IProduct, quantity: int):
         raise Exception('Not implemented')
 
     @abstractmethod
-    def remove_product(self, produtct: IProduct):
+    def remove_product(self, produtct: IProduct, quantity: int):
         raise Exception('Not implemented')

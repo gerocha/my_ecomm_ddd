@@ -6,9 +6,8 @@ from .interfaces import (IOrder, IProduct)
 
 
 class Order(IOrder):
-    def __init__(self, products: List[IProduct]):
-        self.products = products
-        self.uuid = ''
+    def __init__(self, uuid: str):
+        self.uuid = uuid
 
         @property
         def total(self):
