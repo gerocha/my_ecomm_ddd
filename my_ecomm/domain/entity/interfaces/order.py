@@ -17,7 +17,7 @@ class IOrder(ABC):
         pass
 
     @abstractmethod
-    def process_payment(self):
+    def checkout(self):
         pass
 
     @abstractmethod
