@@ -31,7 +31,7 @@ def cart(customer):
 
 @pytest.fixture
 def order(product):
-    return Order(products=[product])
+    return Order(items=[product], uuid='teste')
 
 
 @pytest.fixture
