@@ -44,4 +44,7 @@ class ShoppingCart(IShoppingCart):
         self.item_list = []
 
     def generate_order(self):
-        return Order(uuid='teste')
+        order = Order(uuid='teste', items=[item.item for item in self.item_list])
+        self.clear()
+
+        return order
