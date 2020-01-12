@@ -12,5 +12,10 @@ class InvoiceEnum(Enum):
 
 class Invoice(IInvoice):
     def __init__(self, items: List[IProduct], payment_method: IPayment,
-                 freight: int, state: InvoiceEnum):
-        pass
+                 state: InvoiceEnum):
+        self.items = items
+        self.payment_method = payment_method
+        self.state = state
+
+    def pay(self):
+        self.payment_method.pay()

@@ -25,4 +25,6 @@ class Order(IOrder):
         self.payment = payment
 
     def checkout(self):
-        return Invoice()
+        return Invoice(items=self.items,
+                       payment_method=self.payment,
+                       state='PENDING')
