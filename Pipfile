@@ -6,9 +6,13 @@ name = "pypi"
 [dev-packages]
 pytest = "*"
 pytest-watch = "*"
+typing-extensions = "*"
 
 [requires]
 python_version = "3.7"
+
+[packages]
+Pipfile = "*"
 
 [packages.e1839a8]
 path = "."
